@@ -111,7 +111,7 @@ void setup() {
   }
   
   Serial.begin(115200);
-  Serial.println("Starting Festival Hat Controller");
+  Serial.println("Starting Lights");
 }
 
 /**
@@ -419,7 +419,7 @@ float calculateMagnitudeChangeFactor() {
     magnitudeChangeFactor = max(magnitudeChangeFactor, aboveAverageOverallMagnitudeFactor);
   } else {
     // this is here to avoid treating signal noise as beats
-    //magnitudeChangeFactor *= 1 - aboveAverageOverallMagnitudeFactor;
+    magnitudeChangeFactor *= 1 - aboveAverageOverallMagnitudeFactor;
   }
   
   //float maximumMagnitude = 128; //128;
