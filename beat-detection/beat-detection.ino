@@ -1,15 +1,11 @@
-// FHT, see http://wiki.openmusiclabs.com/wiki/ArduinoFHT
+
 #define LOG_OUT 1 // use the log output function
 #define FHT_N 128 // amount of bins to use
 #include <FHT.h> // include the library
-
 #define FreqLog // use log scale for FHT frequencies
 #define FreqGainFactorBits 0
 #define FreqSerialBinary
 #define VolumeGainFactorBits 0
-
-// Macros for faster sampling, see
-// http://yaab-arduino.blogspot.co.il/2015/02/fast-sampling-from-analog-input.html
 #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 
@@ -19,7 +15,7 @@ const bool LOG_FREQUENCY_DATA = false;
 
 // Set to true if the light should be based on detected beats instead
 // of detected amplitudes.
-const bool PERFORM_BEAT_DETECTION = false;
+const bool PERFORM_BEAT_DETECTION = true;
 
 const int SOUND_REFERENCE_PIN = 8; // D8
 const int HAT_LIGHTS_PIN = 9; // D9
