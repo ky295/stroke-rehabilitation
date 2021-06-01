@@ -12,7 +12,7 @@ API_KEY = 'hqQuiDT6rdh3dRJpEKXTXfunjMZCN5vG'
 _cert = None
 test_patient_username = 'TestPatient'
 test_patient_password = 'Escape78BrightLight'
-test_plate_template_name = 'Raw Medical'
+test_plate_template_name = 'Test Data'
 #test_plate_template_name = 'Key Plate'
 
 
