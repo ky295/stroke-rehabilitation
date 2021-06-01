@@ -19,7 +19,7 @@ test_plate_template_name = 'Raw Medical'
 _user_api_key = API_KEY
 _key_plate_template_id = None
 _key_plate_data_id = None
-_record_id = None
+_record_id = 2
 _user_id = None
 LONG_TIME_EPOCH: datetime = datetime(1800, 1, 1)
 
@@ -341,13 +341,13 @@ template_list_active()
 
 # Commented-out parts below will need to be modified to run OK....
 
-# template = template_read_active_full(test_plate_template_name)
-# pprint(template)
-# template_id = template["id"]
-# template_id = _key_plate_template_id
+template = template_read_active_full(test_plate_template_name)
+pprint(template)
+template_id = template["id"]
+template_id = _key_plate_template_id
 
 
-# with open('C:\Temp\somefile.json', 'rb') as content_file:
+with open('C:\Temp\somefile.json', 'rb') as content_file:
 #    content = content_file.read()
 #
 #    file_key = file_create(content, 'image/png')
@@ -356,16 +356,16 @@ template_list_active()
 #
 #    print(f'File key = {file_key}  DOB={dob} ({to_long_time(dob)})  template_name={test_plate_template_name}')
 #
-#    values = [
-#            {'name': 'Date1', 'value': to_long_time(datetime.now())},
-#            {'name': 'Time1', 'value': to_long_time(datetime.now())},
+    values = [
+            {'name': 'Date1', 'value': to_long_time(datetime.now())},
+            {'name': 'Time1', 'value': to_long_time(datetime.now())},
 
-#            {'name': 'flowrate', 'value': ??},
-#            {'name': 'mass', 'value': ??},
-#            {'name': 'turbidity', 'value': ??},
-#            {'name': 'urinecolour', 'value': ??},
+            {'name': 'flowrate', 'value': ??},
+            {'name': 'mass', 'value': ??},
+            {'name': 'turbidity', 'value': ??},
+            {'name': 'urinecolour', 'value': ??},
 
-#            # {'name': 'Chart1', 'value': 'somefile.json', 'attachments': [{'description': 'Some description', 'key': file_key, 'original_file_name': 'somefile.json', 'saved_date_time': to_long_time(datetime(2018, 3, 7))}]},
-#        ]
-#    data_create(_record_id, template_id, values)
+            {'name': 'Chart1', 'value': 'somefile.json', 'attachments': [{'description': 'Some description', 'key': file_key, 'original_file_name': 'somefile.json', 'saved_date_time': to_long_time(datetime(2018, 3, 7))}]},
+        ]
+    data_create(_record_id, template_id, values)
 #    data_read_newest(_record_id, template_id, "")
