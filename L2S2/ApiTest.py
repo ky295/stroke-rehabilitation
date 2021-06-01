@@ -21,7 +21,7 @@ _key_plate_template_id = None
 _key_plate_data_id = None
 _record_id = 2
 _user_id = None
-LONG_TIME_EPOCH: datetime = datetime(1800, 1, 1)
+#LONG_TIME_EPOCH: datetime = datetime(1800, 1, 1)
 
 
 def get_api_key_header(api_key):
@@ -105,7 +105,7 @@ def record_update():
 
     response_json = resp.json()
 
-    pprint(response_json)    
+    pprint(response_json)
 
     
 def data_create(record_id, template_id, control_values: list):
@@ -181,7 +181,7 @@ def template_read_active_full(plate_template_name):
 
     status = response_json['PlateTemplateReadActiveByIdNameResult']['status']
 
-    if status != 0: 
+    if status != 0:
         print(f"Failed, status={status}")
         return
 
@@ -357,8 +357,8 @@ with open('C:\Temp\somefile.json', 'rb') as content_file:
 #    print(f'File key = {file_key}  DOB={dob} ({to_long_time(dob)})  template_name={test_plate_template_name}')
 #
     values = [
-            {'name': 'Date1', 'value': to_long_time(datetime.now())},
-            {'name': 'Time1', 'value': to_long_time(datetime.now())},
+            #{'name': 'Date1', 'value': to_long_time(datetime.now())},
+            #{'name': 'Time1', 'value': to_long_time(datetime.now())},
 
             {'name': 'patientID', 'value': 101010},
             {'name': 'score', 'value': 5},
