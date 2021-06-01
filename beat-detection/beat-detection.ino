@@ -419,7 +419,7 @@ float calculateMagnitudeChangeFactor() {
     magnitudeChangeFactor = max(magnitudeChangeFactor, aboveAverageOverallMagnitudeFactor);
   } else {
     // this is here to avoid treating signal noise as beats
-    magnitudeChangeFactor *= 1 - aboveAverageOverallMagnitudeFactor;
+    //magnitudeChangeFactor *= 1 - aboveAverageOverallMagnitudeFactor;
   }
   
   //float maximumMagnitude = 128; //128;
@@ -532,7 +532,7 @@ void updateLights() {
   lightIntensityValue = lightIntensityBumpValue * fadeFactor;
   lightIntensityValue = constrain(lightIntensityValue, 0, 1);
   
-  logValue("L", lightIntensityValue, 20);
+  //logValue("L", lightIntensityValue, 20);
   
   // scale the intensity to be in range of maximum and minimum
   float scaledLightIntensity = MINIMUM_LIGHT_INTENSITY + (lightIntensityValue * (MAXIMUM_LIGHT_INTENSITY - MINIMUM_LIGHT_INTENSITY));
@@ -541,6 +541,7 @@ void updateLights() {
   analogWrite(HAT_LIGHTS_PIN, pinValue);
   
   // also use the builtin LED, for debugging when no lights are connected
+  // can change the threshold to be higher depending on level of difficulty
   if (scaledLightIntensity > MAXIMUM_LIGHT_INTENSITY - ((MAXIMUM_LIGHT_INTENSITY - MINIMUM_LIGHT_INTENSITY) / 4)) {
     digitalWrite(LED_BUILTIN, HIGH);
   } else {
@@ -559,7 +560,7 @@ void updateLights() {
   // scale the intensity to be in range of maximum and minimum
   scaledLightIntensity = MINIMUM_LIGHT_INTENSITY + (fadeFactor * (MAXIMUM_LIGHT_INTENSITY - MINIMUM_LIGHT_INTENSITY));
   
-  //logValue("P", scaledLightIntensity, 10);
+  logValue("P", scaledLightIntensity, 10);
   
   pinValue = 255 * scaledLightIntensity;
   analogWrite(HAT_LIGHTS_PULSE_PIN, pinValue);
