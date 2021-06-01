@@ -12,12 +12,12 @@ API_KEY = 'hqQuiDT6rdh3dRJpEKXTXfunjMZCN5vG'
 _cert = None
 test_patient_username = 'TestPatient'
 test_patient_password = 'Escape78BrightLight'
-test_plate_template_name = 'Test Data'
+test_plate_template_name = 'Team 1 2021'
 #test_plate_template_name = 'Key Plate'
 
 
 _user_api_key = API_KEY
-_key_plate_template_id = None
+_key_plate_template_id = 'b4830184-0586-4e8c-a5f3-600728283546'
 _key_plate_data_id = None
 _record_id = 2
 _user_id = None
@@ -26,7 +26,6 @@ LONG_TIME_EPOCH: datetime = datetime(1800, 1, 1)
 
 def get_api_key_header(api_key):
     return {'Authorization': f'X-API-KEY {api_key}'}
-
 
 
 def from_long_time(long_date_time: int) -> datetime:
@@ -203,8 +202,6 @@ def template_list_active():
     pprint(response_json['PlateTemplateReadAllActiveResult'], width=120)
 
 
-
-
 def file_create(file_content, content_type):
     headers = get_api_key_header(_user_api_key)
     headers['Content-Type'] = content_type
@@ -278,7 +275,6 @@ def user_update_set_password(user_id, password):
     pprint(response_json['UserUpdateResult'])
 
 
-
 def user_change_password(user_id, old_password, new_password):
     payload = {'user_id': user_id,
                'old_password': old_password,
@@ -334,8 +330,7 @@ def user_read_for_portal_record(record_id):
 
     pprint(response_json['UserReadForPortalRecordResult'])
 
-
-template_list_active()
+# template_list_active()
 
 # record_search()
 
@@ -343,8 +338,8 @@ template_list_active()
 
 template = template_read_active_full(test_plate_template_name)
 pprint(template)
-template_id = template["id"]
-#template_id = _key_plate_template_id
+#template_id = template["id"]
+template_id = _key_plate_template_id
 
 
 #with open('C:\Temp\somefile.json', 'rb') as content_file:
@@ -357,16 +352,16 @@ template_id = template["id"]
 #    print(f'File key = {file_key}  DOB={dob} ({to_long_time(dob)})  template_name={test_plate_template_name}')
 #
 values = [
-        #{'name': 'Date1', 'value': to_long_time(datetime.now())},
-        #{'name': 'Time1', 'value': to_long_time(datetime.now())},
+        {'name': 'Date', 'value': to_long_time(datetime.now())},
+        {'name': 'Time', 'value': to_long_time(datetime.now())},
 
-        {'id': 5, 'value': 101010},
-        {'id': 29, 'value': 5},
-        {'id': 11, 'value': 2.2},
-        {'id': 14, 'value': 2},
-        {'id': 28, 'value': 5},
+        {'id': 79, 'value': 2},    # Stability score
+        {'id': 84, 'value': 3.3},    # average time between hit and beat
+        {'id': 85, 'value': 9},  # Difficulty level
+        {'id': 86, 'value': 2},    # Self-reported stress
+        {'id': 87, 'value': 30},    # Session duration
 
         # {'name': 'Chart1', 'value': 'somefile.json', 'attachments': [{'description': 'Some description', 'key': file_key, 'original_file_name': 'somefile.json', 'saved_date_time': to_long_time(datetime(2018, 3, 7))}]},
     ]
 data_create(_record_id, template_id, values)
-#    data_read_newest(_record_id, template_id, "")
+data_read_newest(_record_id, template_id, "")
