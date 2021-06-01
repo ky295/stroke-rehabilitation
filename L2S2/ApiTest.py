@@ -344,10 +344,10 @@ template_list_active()
 template = template_read_active_full(test_plate_template_name)
 pprint(template)
 template_id = template["id"]
-template_id = _key_plate_template_id
+#template_id = _key_plate_template_id
 
 
-with open('C:\Temp\somefile.json', 'rb') as content_file:
+#with open('C:\Temp\somefile.json', 'rb') as content_file:
 #    content = content_file.read()
 #
 #    file_key = file_create(content, 'image/png')
@@ -356,17 +356,17 @@ with open('C:\Temp\somefile.json', 'rb') as content_file:
 #
 #    print(f'File key = {file_key}  DOB={dob} ({to_long_time(dob)})  template_name={test_plate_template_name}')
 #
-    values = [
-            #{'name': 'Date1', 'value': to_long_time(datetime.now())},
-            #{'name': 'Time1', 'value': to_long_time(datetime.now())},
+values = [
+        #{'name': 'Date1', 'value': to_long_time(datetime.now())},
+        #{'name': 'Time1', 'value': to_long_time(datetime.now())},
 
-            {'name': 'patientID', 'value': 101010},
-            {'name': 'score', 'value': 5},
-            {'name': 'time_diff', 'value': 2.2},
-            {'name': 'difficulty_level', 'value': 2},
-            {'name': 'stress', 'value': 5},
+        {'name': 'patientID', 'value': 101010},
+        {'name': 'score', 'value': 5},
+        {'name': 'time_diff', 'value': 2.2},
+        {'name': 'difficulty_level', 'value': 2},
+        {'name': 'stress', 'value': 5},
 
-            # {'name': 'Chart1', 'value': 'somefile.json', 'attachments': [{'description': 'Some description', 'key': file_key, 'original_file_name': 'somefile.json', 'saved_date_time': to_long_time(datetime(2018, 3, 7))}]},
-        ]
-    data_create(_record_id, template_id, values)
+        # {'name': 'Chart1', 'value': 'somefile.json', 'attachments': [{'description': 'Some description', 'key': file_key, 'original_file_name': 'somefile.json', 'saved_date_time': to_long_time(datetime(2018, 3, 7))}]},
+    ]
+data_create(_record_id, template_id, values)
 #    data_read_newest(_record_id, template_id, "")
