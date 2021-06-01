@@ -21,7 +21,7 @@ _key_plate_template_id = None
 _key_plate_data_id = None
 _record_id = 2
 _user_id = None
-#LONG_TIME_EPOCH: datetime = datetime(1800, 1, 1)
+LONG_TIME_EPOCH: datetime = datetime(1800, 1, 1)
 
 
 def get_api_key_header(api_key):
@@ -56,7 +56,7 @@ def record_read(record_id):
 
     pprint(response_json)
 
-    
+
 def record_search():
     filters = [
             {'operator': 1, 'property': 'Surname', 'value': 'Duck'}
@@ -91,7 +91,7 @@ def record_search2():
 
     pprint(response_json)
 
-    
+
 def record_update():
     payload = {'id': _record_id,
                'custom2': "Boo!"}
