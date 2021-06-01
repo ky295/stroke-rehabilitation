@@ -360,12 +360,13 @@ with open('C:\Temp\somefile.json', 'rb') as content_file:
             {'name': 'Date1', 'value': to_long_time(datetime.now())},
             {'name': 'Time1', 'value': to_long_time(datetime.now())},
 
-            {'name': 'flowrate', 'value': ??},
-            {'name': 'mass', 'value': ??},
-            {'name': 'turbidity', 'value': ??},
-            {'name': 'urinecolour', 'value': ??},
+            {'name': 'patientID', 'value': 101010},
+            {'name': 'score', 'value': 5},
+            {'name': 'time_diff', 'value': 2.2},
+            {'name': 'difficulty_level', 'value': 2},
+            {'name': 'stress', 'value': 5},
 
-            {'name': 'Chart1', 'value': 'somefile.json', 'attachments': [{'description': 'Some description', 'key': file_key, 'original_file_name': 'somefile.json', 'saved_date_time': to_long_time(datetime(2018, 3, 7))}]},
+            # {'name': 'Chart1', 'value': 'somefile.json', 'attachments': [{'description': 'Some description', 'key': file_key, 'original_file_name': 'somefile.json', 'saved_date_time': to_long_time(datetime(2018, 3, 7))}]},
         ]
     data_create(_record_id, template_id, values)
 #    data_read_newest(_record_id, template_id, "")
