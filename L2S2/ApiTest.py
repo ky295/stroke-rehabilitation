@@ -361,10 +361,10 @@ values = [
         #{'name': 'Time1', 'value': to_long_time(datetime.now())},
 
         {'id': 5, 'value': 101010},
-#        {'name': 'score', 'value': 5},
-#        {'name': 'time_diff', 'value': 2.2},
-#        {'name': 'difficulty_level', 'value': 2},
-#        {'name': 'stress', 'value': 5},
+        {'id': 29, 'value': 5},
+        {'id': 11, 'value': 2.2},
+        {'id': 14, 'value': 2},
+        {'id': 28, 'value': 5},
 
         # {'name': 'Chart1', 'value': 'somefile.json', 'attachments': [{'description': 'Some description', 'key': file_key, 'original_file_name': 'somefile.json', 'saved_date_time': to_long_time(datetime(2018, 3, 7))}]},
     ]
