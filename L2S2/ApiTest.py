@@ -342,7 +342,7 @@ pprint(template)
 template_id = _key_plate_template_id
 
 
-#with open('C:\Temp\somefile.json', 'rb') as content_file:
+#with open('somefile.json', 'rb') as content_file:
 #    content = content_file.read()
 #
 #    file_key = file_create(content, 'image/png')
@@ -356,7 +356,7 @@ values = [
         {'name': 'Time', 'value': to_long_time(datetime.now())},
 
         {'id': 79, 'value': 2},    # Stability score
-        {'id': 84, 'value': 3.3},    # average time between hit and beat
+        {'id': 84, 'value': 50},    # Total number of hits
         {'id': 85, 'value': 9},  # Difficulty level
         {'id': 86, 'value': 2},    # Self-reported stress
         {'id': 87, 'value': 30},    # Session duration
