@@ -19,9 +19,9 @@ const bool PERFORM_BEAT_DETECTION = true;
 
 const int SOUND_REFERENCE_PIN = 8; // D8
 const int HAT_LIGHTS_PIN = 9; // D9
-const int LIGHT_PIN = 7;
+const int LIGHT_PIN = 11;
 const int DRUM_PAD = 3;
-const int HAT_LIGHTS_LOW_PIN = 11; // D11
+const int HAT_LIGHTS_LOW_PIN = 7; // D11
 const int HAT_LIGHTS_HIGH_PIN = 12; // D12
 const int HAT_LIGHTS_PULSE_PIN = 13; // D13
 
