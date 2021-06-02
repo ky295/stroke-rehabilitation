@@ -19,7 +19,9 @@ const bool PERFORM_BEAT_DETECTION = true;
 
 const int SOUND_REFERENCE_PIN = 8; // D8
 const int HAT_LIGHTS_PIN = 9; // D9
-const int HAT_LIGHTS_LOW_PIN = 11; // D11
+const int LIGHT_PIN = 11;
+const int DRUM_PAD = 3;
+const int HAT_LIGHTS_LOW_PIN = 7; // D11
 const int HAT_LIGHTS_HIGH_PIN = 12; // D12
 const int HAT_LIGHTS_PULSE_PIN = 13; // D13
 
@@ -91,6 +93,8 @@ void setup() {
   setupADC();
 
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(LIGHT_PIN, OUTPUT);
+  pinMode(DRUM_PAD, INPUT);
   pinMode(HAT_LIGHTS_PIN, OUTPUT);
   pinMode(HAT_LIGHTS_LOW_PIN, OUTPUT);
   pinMode(HAT_LIGHTS_HIGH_PIN, OUTPUT);
@@ -539,14 +543,30 @@ void updateLights() {
   
   int pinValue = 255 * scaledLightIntensity;
   analogWrite(HAT_LIGHTS_PIN, pinValue);
+
+
+
+
   
+  // !!!!!!!!!!!!!!!!!!±!!!!!!
   // also use the builtin LED, for debugging when no lights are connected
   // can change the threshold to be higher depending on level of difficulty
-  if (scaledLightIntensity > MAXIMUM_LIGHT_INTENSITY - ((MAXIMUM_LIGHT_INTENSITY - MINIMUM_LIGHT_INTENSITY) / 4)) {
-    digitalWrite(LED_BUILTIN, HIGH);
+//  if (scaledLightIntensity > MAXIMUM_LIGHT_INTENSITY - ((MAXIMUM_LIGHT_INTENSITY - MINIMUM_LIGHT_INTENSITY) / 4)) {
+//    digitalWrite(LIGHT_PIN, HIGH);
+//  } else {
+//    digitalWrite(LIGHT_PIN, LOW);
+//  }
+
+
+  //feedback mechanism green light if correctly hit
+  if ((scaledLightIntensity > MAXIMUM_LIGHT_INTENSITY - ((MAXIMUM_LIGHT_INTENSITY - MINIMUM_LIGHT_INTENSITY) / 4)) && (digitalRead(DRUM_PAD) == HIGH)){
+    digitalWrite(LIGHT_PIN, HIGH);
   } else {
-    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(LIGHT_PIN, LOW);
   }
+
+
+  
   
   // update the pulse signal
   long durationSincePulse = millis() - lastPulseTimestamp;
