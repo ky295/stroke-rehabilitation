@@ -15,7 +15,6 @@ test_patient_password = 'Escape78BrightLight'
 test_plate_template_name = 'Test Data'
 #test_plate_template_name = 'Key Plate'
 
-
 _user_api_key = API_KEY
 _key_plate_template_id = None
 _key_plate_data_id = None
