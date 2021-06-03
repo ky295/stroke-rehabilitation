@@ -6,6 +6,10 @@ import inspect
 import uuid
 from pprint import pprint
 
+# JSON Imports
+import serial
+import json
+
 # CUEU dev server
 API_URI = 'https://apicued2021.xenplate.com/internalapi'
 API_KEY = 'hqQuiDT6rdh3dRJpEKXTXfunjMZCN5vG'
@@ -21,6 +25,16 @@ _key_plate_data_id = None
 _record_id = 2
 _user_id = None
 LONG_TIME_EPOCH: datetime = datetime(1800, 1, 1)
+
+# Communicating to Arduino to read data
+arduino = serial.Serial()
+arduino.baudrate = 19200
+arduino.port = 'COM4'
+noOfVariables = 5
+while (len(inputData)<noOfVariables):
+    inputData.append(arduino.readline().decode("utf-8"))
+
+jsonString = json.dumps(inputData)
 
 
 def get_api_key_header(api_key):
@@ -333,34 +347,29 @@ def user_read_for_portal_record(record_id):
 
 # record_search()
 
-# Commented-out parts below will need to be modified to run OK....
-
 template = template_read_active_full(test_plate_template_name)
 pprint(template)
 #template_id = template["id"]
 template_id = _key_plate_template_id
 
 
-#with open('somefile.json', 'rb') as content_file:
-#    content = content_file.read()
-#
-#    file_key = file_create(content, 'image/png')
-#
-#    dob = datetime(1988, 1, 22, 12, 34)
-#
-#    print(f'File key = {file_key}  DOB={dob} ({to_long_time(dob)})  template_name={test_plate_template_name}')
-#
+# Unpack JSON string from Arduino
+data = json.loads(jsonString)
+
+
+#   Assuming Arduino variables are named as below
+
 values = [
         {'name': 'Date', 'value': to_long_time(datetime.now())},
         {'name': 'Time', 'value': to_long_time(datetime.now())},
 
-        {'id': 79, 'value': 7},    # Stability score
-        {'id': 84, 'value': 50},    # Total number of hits
-        {'id': 85, 'value': 8},  # Difficulty level
-        {'id': 86, 'value': 2},    # Self-reported stress
-        {'id': 87, 'value': 30},    # Session duration
+        {'id': 79, 'value': data['stability']},    # Stability score
+        {'id': 84, 'value': data['hits']},    # Total number of hits
+        {'id': 85, 'value': data['difficulty']},  # Difficulty level
+        {'id': 86, 'value': data['stress']},    # Self-reported stress
+        {'id': 87, 'value': data['duration']},    # Session duration
+]
 
-        # {'name': 'Chart1', 'value': 'somefile.json', 'attachments': [{'description': 'Some description', 'key': file_key, 'original_file_name': 'somefile.json', 'saved_date_time': to_long_time(datetime(2018, 3, 7))}]},
-    ]
+
 data_create(_record_id, template_id, values)
 data_read_newest(_record_id, template_id, "")
