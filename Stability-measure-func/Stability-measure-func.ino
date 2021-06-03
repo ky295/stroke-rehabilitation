@@ -87,10 +87,10 @@ void loop()
     }
 }
 void difficulty_level_increase(){
-  diffivultyLevel+=1;
+  difficultyLevel+=1;
   }
 void difficulty_level_decrease(){
-  diffivultyLevel-=1;
+  difficultyLevel-=1;
   }
 void calc_acc()
 {
