@@ -3,6 +3,8 @@ import json
 arduino = serial.Serial()
 arduino.baudrate = 19200
 arduino.port = 'COM4'
-while True:
-    jsonString = json.dumps(arduino.readline().decode("utf-8"))
-    inputData.append(jsonString)
+noOfVariables = 5
+while (len(inputData)<noOfVariables):
+    inputData.append(arduino.readline().decode("utf-8"))
+
+jsonString = json.dumps(inputData)
