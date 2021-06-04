@@ -72,7 +72,7 @@ void loop()
     digitalWrite(2, LOW);
   }
 
-  Serial.println("");
+//   Serial.println("");
   loop_count ++;
   // Wait to full timeStep period
   delay((timeStep*1000) - (millis() - timer));
@@ -85,6 +85,10 @@ void loop()
   if (f_peaks[0] < 50) {
     difficulty_level_decrease();
     }
+ Serial.println(["Stability", f_peaks[0]]);
+ Serial.println(["Difficulty", difficultyLevel]);
+ Serial.println(["Duration", timer]);
+
 }
 void difficulty_level_increase(){
   difficultyLevel+=1;
