@@ -46,12 +46,12 @@ void loop() {
       pwm.setPWM(bluePinList[x], 4096, 0);
 //      x=(x+1)%7;
       x = random(0,7);
-      delay(400);
+      delay(400); //how long green light lasts
       break;
       }
    Serial.println(["hits ", noOfHits]);
     }
-  while (millis() < time_now + 1616) {
+  while (millis() < time_now + 1000) {
     pwm.setPWM(bluePinList[y], 4096, 0);
     pwm.setPWM(greenPinList[y], 4096, 0);
     }
