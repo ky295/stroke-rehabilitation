@@ -49,6 +49,7 @@ void loop() {
       delay(400);
       break;
       }
+   Serial.println(["hits ", noOfHits]);
     }
   while (millis() < time_now + 1616) {
     pwm.setPWM(bluePinList[y], 4096, 0);
